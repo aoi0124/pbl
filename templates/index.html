@@ -6,16 +6,21 @@
     <link href="{{ url_for('static', filename='style.css') }}", rel="stylesheet", type="text/css">
 </head>
 <body>
-    <h1>{{titile}}</h1>
+    <div class="example">
+        <img src="{{ url_for('static', filename='bunbougu_kokuban.png') }}">
+        <a onclick="location.href='rogin.html'">ログイン</a>
+        <p>{{title}}</p>
+    </div>
+
 
     <div class="post">
         <h2>{{body}}</h2><br>
-        <form method="POST" action="/result">
+        <form method="POST" action="*">
             <p style="text-align:center">
                 <textarea name="comment" maxlength="300" rows="6" cols="50" placeholder="300字以内で書いてください。"></textarea>
                 <input type="submit" value="投稿">
             </p>
-        </form>>
+        </form>
     </div>
 
     <div class="postlist">
