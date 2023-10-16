@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>会員登録画面</title>
+        <style>
+            form {
+                width: 250px;
+                border: solid 1px black;
+            }
+
+            label {
+                display: block;
+            }
+
+            .example{
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form action="/create">
+            <div class="example">
+              <label for="name">名前</label>
+              <input type="text" name="name" id="name" placeholder="例）鈴木 太郎">
+              <label for="mail">メールアドレス</label>
+              <input class="inputs" type="email" name="email" id="maillabel" placeholder="○○○.jp">
+              <label for="password">パスワード</label>
+              <input type="text" name="password" id="password" >
+              <label for="seinengappi">生年月日</label>
+              <input type="date" name="seinengappi">
+              <input type="submit" value="登録する" formmethod="POST">
+            </div>  
+          </form>
+    </body>
+</html>
