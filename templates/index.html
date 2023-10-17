@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>バスケの掲示板サイト</title>
-    <link href="{{ url_for('static', filename='style.css') }}", rel="stylesheet", type="text/css">
+    <link href="static\style.css", rel="stylesheet", type="text/css">
 </head>
 <body>
     <div class="example">
-        <img src="{{ url_for('static', filename='bunbougu_kokuban.png') }}">
-        <a onclick="location.href='rogin.html'">ログイン</a>
+        <img src="static\bunbougu_kokuban.png">
+        <button onclick="location.href='login.html'">ログイン</button>
         <p>{{title}}</p>
     </div>
 

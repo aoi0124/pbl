@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ログインサイト</title>
+    <link href="static\login.css", rel="stylesheet", type="text/css">
+</head>
+<body>
+<form name="login_form" action='/result'>
+    <div class="login_form_top">
+      <h1>LOGIN</h1>
+      <p>メールアドレスとパスワードをご入力の上、「LOGIN」ボタンをクリックしてください。</p>
+    </div>
+    <div class="login_form_btm">
+      <input type="id" name="email" placeholder="メールアドレス">
+      <input type="password" name="password" placeholder="パスワード">
+      <input type="submit" name="botton" value="LOGIN" formmethod="POST">
+      <button onclick="location.href='/create.html'">アカウント作成はこちら</button>
+    </div>
+</form>
+</body>
+</html>
