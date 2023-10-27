@@ -9,7 +9,7 @@ erDiagram
     user {
         int id pk
         char name
-        char address
+        char mailaddress
         char passward
     }
 
