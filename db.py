@@ -1,20 +1,19 @@
 import MySQLdb
 
 con = MySQLdb.connect(
-    host="localhost",
-    user="root",
-    password="aoi",
-    db="掲示板")
+    host='localhost',
+    user='root',
+    password='abc',
+    db='user')
 cur = con.cursor()
-
-cur.execute('''
-                CREATE TABLE 掲示板.list
-            (id MEDIUMINT NOT NULL AUTO_INCREMENT,
-             name VARCHAR(30),
-             sex CHAR(1),
-             PRAIMARY KEY(id))
-            ''')
-
+cur.execute("""
+            CREATE TABLE user.list
+    (id MEDIUMINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(30),
+    address VARCHAR(30),
+    passward CHAR(30),
+    PRIMARY KEY (id))
+            """)
 con.commit()
 
 con.close()
