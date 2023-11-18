@@ -1,22 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ログインサイト</title>
-    <link href="static\login.css", rel="stylesheet", type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン画面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<form name="login_form" action='/result'>
-    <div class="login_form_top">
-      <h1>LOGIN</h1>
-      <p>メールアドレスとパスワードをご入力の上、「LOGIN」ボタンをクリックしてください。</p>
-    </div>
-    <div class="login_form_btm">
-      <input type="id" name="email" placeholder="メールアドレス">
-      <input type="password" name="password" placeholder="パスワード">
-      <input type="submit" name="botton" value="LOGIN" formmethod="POST">
-      <button onclick="location.href='/create.html'">アカウント作成はこちら</button>
-    </div>
-</form>
+    <form action="/result" method="post">
+        <h2>ログイン</h2>
+        <label for="address">メールアドレス</label>
+        <input type="email" name="address" id="address" required placeholder="○○○.jp">
+
+        <label for="password">パスワード</label>
+        <input type="password" name="password" id="password" required>
+
+        <button type="submit">ログイン</button>
+
+    </form>
 </body>
 </html>
