@@ -6,28 +6,32 @@
     <link href="static\style.css", rel="stylesheet", type="text/css">
 </head>
 <body>
-    <div class="example">
-        <img src="static\bunbougu_kokuban.png">
-        <button onclick="location.href='login.html'" class="btn btn--orange btn--radius">ログイン</button>
-        <button onclick="location.href='create.html'" class="btn btn--orange btn--radius">新規登録</button>
-        <p>{{title}}</p>
-    </div>
+    
+        <div class="example">
+            <img src="static\bunbougu_kokuban.png">
+            <p>{{title}}</p>
+        </div>
+    
+    
+        <div class="post">
+            <h2>{{body}}</h2><br>
+            <form method="POST" action="{{ url_for('post_comment') }}">
+                <p style="text-align:center">
+                    <textarea name="comment" maxlength="300" rows="6" cols="50" placeholder="300字以内で書いてください。"></textarea>
+                    <input type="submit" value="投稿">
+                </p>
+            </form>
+        </div>
+    
+        <div class="postlist">
+            <h2>{{bodylist}}</h2>
+            <ul>
+                {% for name, comment in comments %}
+                <li><strong>{{ name }}:</strong> {{ comment }}</li>
+                {% endfor %}
+            </ul>
+        </div>
 
-
-    <div class="post">
-        <h2>{{body}}</h2><br>
-        <form method="POST" action="*">
-            <p style="text-align:center">
-                <textarea name="comment" maxlength="300" rows="6" cols="50" placeholder="300字以内で書いてください。"></textarea>
-                <input type="submit" value="投稿">
-            </p>
-        </form>
-    </div>
-
-    <div class="postlist">
-        <h2>{{bodylist}}</h2>
-    </div>
-
-
+    
 </body>
 </html>

@@ -1,36 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>会員登録画面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録画面</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
         form {
-            width: 250px;
-            border: solid 1px black;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
         }
 
         label {
             display: block;
+            margin-top: 10px;
+            font-weight: bold;
         }
 
-        .example{
-            text-align: center;
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .login-link {
+            margin-top: 10px;
+            font-size: 14px;
         }
     </style>
 </head>
-
 <body>
-    <form action="/create">
-        <div class="example">
-            <label for="name">名前</label>
-            <input type="text" name="name" id="name" placeholder="例）鈴木 太郎">
-            <label for="mail">メールアドレス</label>
-            <input class="inputs" type="email" name="email" id="maillabel" placeholder="○○○.jp">
-            <label for="password">パスワード</label>
-            <input type="text" name="password" id="password" >
-            <label for="seinengappi">生年月日</label>
-            <input type="date" name="seinengappi">
-            <input type="submit" value="登録する" formmethod="POST">
-        </div>  
+    <form action="/register" method="post" accept-charset="UTF-8">
+        <h2>新規登録</h2>
+        <label for="name">名前</label>
+        <input type="text" name="name" id="name" required placeholder="例）鈴木 太郎">
+
+        <label for="address">メールアドレス</label>
+        <input type="email" name="address" id="address" required placeholder="○○○.jp">
+
+        <label for="password">パスワード</label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="seinengappi">生年月日</label>
+        <input type="date" name="seinengappi" required>
+
+        <button type="submit">登録する</button>
+
+        <p class="login-link">すでにアカウントをお持ちの方は <a href="/login">こちら</a></p>
     </form>
 </body>
 </html>
