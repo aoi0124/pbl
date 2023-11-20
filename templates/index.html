@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <title>バスケの掲示板サイト</title>
     <link href="static\style.css", rel="stylesheet", type="text/css">
+
+    <style>
+        .postlist ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .postlist li {
+            border: 1px solid #0a0505;
+            margin: 10px auto;
+            padding: 70px;
+            border-radius: 5px;
+            max-width: 400px; 
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
     
@@ -15,7 +31,7 @@
     
         <div class="post">
             <h2>{{body}}</h2><br>
-            <form method="POST" action="{{ url_for('post_comment') }}">
+            <form method="POST" action="{{ url_for('post_comment') }}" accept-charset="UTF-8">
                 <p style="text-align:center">
                     <textarea name="comment" maxlength="300" rows="6" cols="50" placeholder="300字以内で書いてください。"></textarea>
                     <input type="submit" value="投稿">
@@ -27,7 +43,10 @@
             <h2>{{bodylist}}</h2>
             <ul>
                 {% for name, comment in comments %}
-                <li><strong>{{ name }}:</strong> {{ comment }}</li>
+                <li>
+
+                    <strong>{{ name }}:</strong> {{ comment }}<br>
+                </li>
                 {% endfor %}
             </ul>
         </div>
