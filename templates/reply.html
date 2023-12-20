@@ -1,0 +1,60 @@
+<!-- reply.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>バスケの掲示板サイト - 返信ページ</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+
+    <style>
+        /* 返信コメント一覧のスタイル */
+        .replylist ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .replylist li {
+            border: 1px solid #0a0505;
+            margin: 5px auto;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="example">
+        <img src="{{ url_for('static', filename='bunbougu_kokuban.png') }}">
+        <p>{{ title }}</p>
+    </div>
+
+    <div class="post">
+        <h2>{{ body }}</h2><br>
+        <!-- 返信フォーム -->
+        <form method="POST" action="{{ url_for('post_reply') }}" accept-charset="UTF-8">
+            <input type="hidden" name="comments_id" value="{{ comments_id }}">
+            <p style="text-align:center">
+                <textarea name="reply" maxlength="300" rows="6" cols="50" placeholder="300字以内で書いてください。"></textarea>
+                <input type="submit" value="返信">
+            </p>
+        </form>
+    </div>
+
+    <div class="replylist">
+        <h2>{{ bodylist }}</h2>
+        <!-- 返信コメント一覧 -->
+        <ul>
+            {% for reply_name, reply in replies %}
+            <li>
+                <strong>{{ reply_name }}:</strong> {{ reply }}<br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

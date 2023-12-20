@@ -11,27 +11,30 @@ def init_db():
         host="localhost",
         user="root",
         password="abc",
-        db="user",
-        charset="utf8mb4"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
 
     cur.execute('''
-                CREATE TABLE IF NOT EXISTS user
-                (id MEDIUMINT NOT NULL AUTO_INCREMENT,
-                 name VARCHAR(30),
-                 address VARCHAR(30),
-                 password VARCHAR(30),
-                 PRIMARY KEY(id))
-            ''')
+        CREATE TABLE IF NOT EXISTS user (
+            id MEDIUMINT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(30),
+            address VARCHAR(30),
+            password VARCHAR(30),
+            PRIMARY KEY(id)
+        ) 
+    ''')
 
     cur.execute('''
-                CREATE TABLE IF NOT EXISTS comments
-                (comments_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                 user_id INTEGER,
-                 comment TEXT NOT NULL,
-                 FOREIGN KEY(user_id) REFERENCES user(id))
-            ''')
+        CREATE TABLE IF NOT EXISTS comments (
+            comments_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+            user_id MEDIUMINT,
+            comment TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES user(id)
+        ) 
+    ''')
     
     con.commit()
     con.close()
@@ -50,13 +53,18 @@ def register():
     address = request.form['address']
     password = request.form['password']
     
+    print("Name:", name)
+    print("Address:", address)
+    print("Password:", password)
+    
     # データベースにデータを挿入
     con = MySQLdb.connect(
         host="localhost",
         user="root",
         password="abc",
-        db="user",
-        charset="utf8mb4"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
     cur.execute('INSERT INTO user (name, address, password) VALUES (%s, %s, %s)', (name, address, password))
@@ -83,8 +91,9 @@ def result():
         host="localhost",
         user="root",
         password="abc",
-        db="user",
-        charset="utf8mb4"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
     cur.execute("SELECT user.name, comments.comment FROM user INNER JOIN comments ON user.id = comments.user_id")
@@ -103,7 +112,9 @@ def user_exists(address, password):
         host="localhost",
         user="root",
         password="abc",
-        db="user"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
     cur.execute("SELECT id FROM user WHERE address=%s AND password=%s", (address, password))
@@ -117,7 +128,9 @@ def get_user_id(address, password):
         host="localhost",
         user="root",
         password="abc",
-        db="user"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
     cur.execute("SELECT id FROM user WHERE address=%s AND password=%s", (address, password))
@@ -136,8 +149,9 @@ def post_comment():
         host="localhost",
         user="root",
         password="abc",
-        db="user",
-        charset="utf8mb4"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
         )
     cur = con.cursor()
     cur.execute('INSERT INTO comments (user_id, comment) VALUES (%s, %s)', (user_id, comment))
@@ -156,8 +170,9 @@ def index():
         host="localhost",
         user="root",
         password="abc",
-        db="user",
-        charset="utf8mb4"
+        db="board",
+        charset="utf8mb4",
+        use_unicode=True
     )
     cur = con.cursor()
     cur.execute("SELECT user.name, comments.comment FROM user INNER JOIN comments ON user.id = comments.user_id")
